@@ -1,72 +1,79 @@
-"use client";
+import { Nav } from "@/components/Nav";
+import type { Metadata } from "next";
 
-import { motion } from "framer-motion";
-import { Reveal } from "@/components/Reveal";
+export const metadata: Metadata = { title: "Gallery" };
 
 const photos = [
-  { aspect: "aspect-[4/5]", col: "col-span-12 md:col-span-5 md:col-start-1" },
-  { aspect: "aspect-[3/2]", col: "col-span-12 md:col-span-4 md:col-start-7 md:mt-32" },
-  { aspect: "aspect-[1/1]", col: "col-span-12 md:col-span-3 md:col-start-2 md:mt-[-40px]" },
-  { aspect: "aspect-[2/3]", col: "col-span-12 md:col-span-4 md:col-start-6" },
-  { aspect: "aspect-[16/9]", col: "col-span-12 md:col-span-7 md:col-start-4 md:mt-[-20px]" },
-  { aspect: "aspect-[3/4]", col: "col-span-12 md:col-span-4 md:col-start-1" },
+  { caption: "Placeholder caption" },
+  { caption: "Placeholder caption" },
+  { caption: "Placeholder caption" },
+  { caption: "Placeholder caption" },
+  { caption: "Placeholder caption" },
+  { caption: "Placeholder caption" },
+  { caption: "Placeholder caption" },
+  { caption: "Placeholder caption" },
+  { caption: "Placeholder caption" },
 ];
 
 export default function Gallery() {
   return (
-    <section className="min-h-screen pt-32 pb-20 px-6 md:px-12">
-      {/* page index */}
-      <Reveal>
-        <span className="font-mono text-[10px] tracking-[2px] text-ghost block mb-20 md:mb-28">
-          003 — Gallery
-        </span>
-      </Reveal>
+    <>
+      <header className="mb-6">
+        <h1 className="text-2xl font-bold mb-1">Gallery</h1>
+        <p className="text-grey text-sm italic">
+          soohyungl.com/gallery
+        </p>
+      </header>
 
-      <div className="grid grid-cols-12 gap-4 md:gap-6">
-        {photos.map((photo, i) => (
-          <Reveal
-            key={i}
-            delay={i * 0.08}
-            className={`${photo.col} mt-6 md:mt-0`}
-          >
-            <motion.div
-              className="group relative cursor-default"
-              whileHover="hover"
-            >
-              <motion.div
-                className={`photo-frame ${photo.aspect} w-full`}
-                variants={{
-                  hover: { scale: 0.98 },
-                }}
-                transition={{
-                  duration: 0.6,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
-              />
+      <Nav />
 
-              {/* index label */}
-              <div className="mt-2 flex justify-between items-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <span className="font-mono text-[9px] tracking-[1.5px] text-ghost">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <span className="font-mono text-[9px] tracking-[1.5px] text-ghost">
-                  Placeholder
+      <hr />
+
+      <div className="my-8">
+        <p className="mb-6 text-[14px]">
+          Some pictures. Click to enlarge.
+          <br />
+          <span className="text-grey text-[12px]">
+            ({photos.length} images)
+          </span>
+        </p>
+
+        <div className="grid grid-cols-3 gap-3">
+          {photos.map((photo, i) => (
+            <div key={i} className="group">
+              <div className="aspect-square bg-light border border-grey flex items-center justify-center cursor-pointer hover:border-text transition-colors">
+                <span className="font-mono text-[10px] text-grey group-hover:text-text transition-colors">
+                  {String(i + 1).padStart(2, "0")}.jpg
                 </span>
               </div>
-            </motion.div>
-          </Reveal>
-        ))}
+              <p className="text-[10px] text-grey mt-1.5 leading-tight">
+                {photo.caption}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
 
-      {/* bottom note */}
-      <Reveal className="mt-24 md:mt-32">
-        <div className="flex items-center gap-4">
-          <div className="w-8 h-px bg-rule" />
-          <span className="font-mono text-[10px] tracking-[2px] text-ghost uppercase">
-            Ongoing
-          </span>
-        </div>
-      </Reveal>
-    </section>
+      <hr />
+
+      <div className="my-8 text-[12px] text-grey">
+        <p className="mb-2">
+          All photos taken by me unless otherwise noted.
+        </p>
+        <p>
+          Images are optimized for 56k modems. Please be patient.
+        </p>
+      </div>
+
+      <hr />
+
+      <footer className="text-[11px] text-grey mt-8">
+        <p>
+          <a href="/" className="underline">
+            ← Back to home
+          </a>
+        </p>
+      </footer>
+    </>
   );
 }
