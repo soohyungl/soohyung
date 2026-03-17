@@ -1,6 +1,6 @@
 # soohyungl.com
 
-Personal site built with Next.js 15, Tailwind CSS v4, Framer Motion, and TypeScript.
+Personal site. Next.js 15 + Tailwind v4 + Framer Motion + TypeScript.
 
 ## Setup
 
@@ -8,23 +8,13 @@ Personal site built with Next.js 15, Tailwind CSS v4, Framer Motion, and TypeScr
 npm install
 npm run dev
 ```
-## Deploy to Vercel
 
-### Option A: Git (recommended)
-1. Push this repo to GitHub
-2. Go to [vercel.com/new](https://vercel.com/new)
-3. Import the repo — Vercel auto-detects Next.js
-4. Add your custom domain `soohyungl.com` in **Settings → Domains**
+## Deploy
 
-### Option B: CLI
-```bash
-npm i -g vercel
-vercel
-```
+Push to GitHub → import on [vercel.com/new](https://vercel.com/new).
 
-## Stack
-- **Next.js 15** — App Router, static export
-- **Tailwind CSS v4** — CSS-first config, custom theme
-- **Framer Motion** — scroll reveals, hover animations
-- **TypeScript** — type safety throughout
-- **Fonts** — Cormorant Garamond, Noto Serif KR, Outfit
+## Pages
+
+- `/` — Landing
+- `/about` — Bio + photo
+- `/gallery` — Visuals
